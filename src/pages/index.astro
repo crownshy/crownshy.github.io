@@ -3,79 +3,81 @@ import { Container, FeatureCard } from '@components/odyssey-theme';
 
 import Layout from '../layouts/Page.astro';
 import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro';
+import Card from "../components/sections/CtaCardSection.astro"
+import TextAndImageHero from '../components/sections/heros/TextAndImageHero.astro';
+import { Icon } from 'astro-icon/components';
+
+import {
+	ThreeColumnTextSection,
+	TextCardSection,
+	Button
+} from '@components/odyssey-theme';
+
 ---
 
 <Layout>
 	<HomeHeroSection />
 	<Container>
 		<section class="feature-card__section">
-			<h2>Landing Pages</h2>
-			<p>
-				Use one of our landing pages to jumpstart your website or
-				ad campaign.
-			</p>
-			<div class="feature-card__grid">
-				<FeatureCard href="/landing-pages/landing-1" title="Landing Page 1" imgSrc="/assets/images/home/screenshots/landing-1">
-				</FeatureCard>
-				<FeatureCard href="/landing-pages/landing-2" title="Landing Page 2" imgSrc="/assets/images/home/screenshots/landing-2">
-				</FeatureCard>
-			</div>
-		</section>
-	</Container>
+				<h2>Who are we?</h2>
+				<div class="feature-card__grid">
+				<TextCardSection>
+					<div class='bio' >
+						<h3>Liz</h3>
+						<img class='bio-image' src="/assets/liz-square.jpg"/>
+						<p>
+						Elizabeth Barry serves as Head of Partnerships at The Computational Democracy Project, the 501(c)3 organization she established with the creators of the Polis technology to steward its open source code and methods. Elizabeth works with facilitators, social movements, civil society organizations, journalists, indigenous nations, democratic governments both young and old, and peacebuilders to implement "listening at scale." The collaboration began when her presence at Taiwan's 2014 Sunflower Revolution and subsequent relationship with g0v led to her writing up the first coverage of vTaiwan in the west, in the 2016 piece for Civicist titled "vTaiwan: Public Participation Methods on the Cyberpunk Frontier of Democracy,\" now republished by Taiwan's government.
+						</p>
+					</div>
+			</TextCardSection>
+				<TextCardSection>
+					<div class='bio'>
+						<h3>Stuart</h3>
+						<img class='bio-image' src="/assets/stuart-square.jpg"/>
+						<p>
+						Stuart Lynn is a developer, data scientist and tinkerer whose interests involve widening the participation in scientific discussion and inquiry to non-traditional communities through the development of tools and active participation in citizen science and collaborative processes. He holds a Master in Mathematical Physics and a PHD in Astrophysics from the University of Edinburgh. In previous roles he has worked with non-profits and NGOs with the Two Sigma Data Clinic, lead the Data Science team at CARTO and was the technical lead for the citizen science platform The Zooniverse. He is the lead developer of the Matico project and has built a number of other open source tools focused on understanding and using data.
 
-	<Container>
-		<section class="feature-card__section">
-			<h2>Company Pages</h2>
-			<p>
-				Use one of our prebuilt company pages for your about page, contact page,
-				legal pages, blog posts, etc.
-			</p>
-			<div class="feature-card__grid">
-				<FeatureCard href="/company/about" title="About Page" imgSrc="/assets/images/home/screenshots/about">
-				</FeatureCard>
-				<FeatureCard href="/company/contact" title="Contact Page" imgSrc="/assets/images/home/screenshots/contact">
-				</FeatureCard>
-				<FeatureCard href="/blog/" title="Blog Page" imgSrc="/assets/images/home/screenshots/blog">
-				</FeatureCard>
-				<FeatureCard
-					href="/blog/posts/remote-work-mental-health"
-					title="Blog Post"
-          imgSrc="/assets/images/home/screenshots/blog-post"
-				>
-				</FeatureCard>
-				<FeatureCard
-					href="/company/legal"
-					imgSrc="/assets/images/home/screenshots/legal"
-					title="Legal Page"
-				>
-				</FeatureCard>
-			</div>
-		</section>
-	</Container>
+						</p>
+					</div>
+				</TextCardSection>
+				</div>
 
-	<Container>
-		<section class="feature-card__section">
-			<h2>Theme Pages</h2>
-			<p>Learn more about how to set up and use the Odyssey Theme.</p>
-			<div class="feature-card__grid">
-				<FeatureCard
-					href="/theme/get-started"
-					imgSrc="/assets/images/home/screenshots/get-started"
-					title="Get Started"
-				>
-				</FeatureCard>
-				<FeatureCard
-					href="/theme/style-guide"
-					imgSrc="/assets/images/home/screenshots/style-guide"
-					title="Style Guide"
-				>
-				</FeatureCard>
-			</div>
 		</section>
+
+		<section class="feature-card__section">
+			<h2>Projects</h2>
+			<TextAndImageHero>
+		<div slot="text-container">
+			<h1>Polis Garden</h1>
+			<p>A site tracking Polis deployments, modifications and successes around the world</p>
+		</div>
+		<div slot="btns-container">
+			<Button href="http://polis.garden" customIcon
+				>Learn More<Fragment slot="icon">
+					<Icon name="ic:baseline-chevron-right" />
+				</Fragment></Button
+			>
+		</div>
+		<picture slot="image-container">
+			<img
+				src="/assets/images/landing-1/landing-hero-1.jpg"
+				alt="Astro Odyssee"
+				id="home-hero-image"
+			/>
+		</picture>
+			</TextAndImageHero>
+		</section>
+
 	</Container>
 </Layout>
 
 <style>
+	.bio{
+		margin-bottom: var(--section-margin);
+	}
+	.bio-image{
+		margin-bottom: 0.5rem;
+	}
 	.feature-card__section {
 		margin: var(--section-margin) auto;
 	}

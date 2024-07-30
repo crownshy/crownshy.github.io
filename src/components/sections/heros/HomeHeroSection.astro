@@ -8,31 +8,16 @@ import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
 <Container>
 	<section class="hero-section__section">
 		<div class="hero-section__text">
-				<h1>Welcome to Odyssey</h1>
+				<h1 class="hero-section-header">From<br/> <span class='garden'>garden</span><br/> to <span class='government'>government</span></h1>
 				<p>
-					A marketing website theme built with <a
-						href="https://astro.build"
-						target="_blank"
-						rel="noreferrer">Astro</a
-					> and carefully crafted for startups and businesses.
+	 				 Democratic tools and methods for communites of all shapes and sizez
 				</p>
-				<div class="hero-btns__container">
-					<Button href="/theme/get-started" customIcon
-						>Get Started
-            <Fragment slot="icon">
-              <Icon name="ic:baseline-chevron-right"/>
-            </Fragment>
-            </Button
-					>
-					<Button href="/theme/style-guide" unelevated>Style Guide</Button>
-				</div>
-        {settings.enableThemeSwitcher && <ThemeSwitcher client:only/>}
 		</div>
 		<div class="hero-section__image">
 				<picture>
 					<img
-						src="/assets/images/home/classic-hero.jpg"
-						alt="Astro Odyssey"
+						src="/assets/hero_trees.jpg"
+						alt="Dag Peak, CC BY 2.0 <https://creativecommons.org/licenses/by/2.0>, via Wikimedia Commons"
 						id="home-hero-image"
 					/>
 				</picture>
@@ -41,6 +26,17 @@ import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
 </Container>
 
 <style>
+	.hero-section-header{
+		font-weight:200;
+	}
+	.garden{
+		color: var(--theme-on-surface-1);
+		font-weight:bold;
+	}
+	.government{
+		font-weight:bold;
+		color: var(--theme-on-surface-2);
+	}
 	.hero-section__section {
 		margin: var(--section-margin) auto;
 		min-height: clamp(90vh, 100vw, calc(100vh - var(--navbar-height)));
