@@ -11,17 +11,11 @@ export interface Props {
 	seo?: BaseHeadProps;
 }
 
-import { nav } from '../config/nav.js';
 
 const { seo } = Astro.props as Props;
 ---
 
 <Layout seo={seo}>
-	<Header rightMenu navData={nav} slot="header">
-		<span slot="logo">
-			<Logo />
-		</span>
-	</Header>
 	<div id="page">
 		<slot />
 	</div>

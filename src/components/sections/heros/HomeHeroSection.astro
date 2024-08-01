@@ -1,53 +1,87 @@
 ---
-import { Icon } from 'astro-icon/components';
-import { Container, Button } from '@components/odyssey-theme';
+import { Icon} from 'astro-icon/components';
+import { Container, Button,  Header} from '@components/odyssey-theme';
 import settings from '../../../config/settings.js';
 import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
+import { nav } from '../../../config/nav.js';
+import Logo from '../../../components/Logo.astro';
 ---
 
 <Container>
 	<section class="hero-section__section">
+	<div class='hero-nav'>
+		<Header  rightMenu navData={nav} >
+		<span slot="logo">
+			<Logo />
+		</span>
+	</Header>
+	</div>
+	 <div class="video-overlay" />
+	 <video class='hero-video' autoPlay muted loop>
+      <source src="/assets/cannopy.mp4" type="video/mp4"></source>
+	  </video>
 		<div class="hero-section__text">
 				<h1 class="hero-section-header">From<br/> <span class='garden'>garden</span><br/> to <span class='government'>government</span></h1>
 				<p>
 	 				 Democratic tools and methods for communites of all shapes and sizez
 				</p>
 		</div>
-		<div class="hero-section__image">
-				<picture>
-					<img
-						src="/assets/images/hero_trees.jpg"
-						alt="Dag Peak, CC BY 2.0 <https://creativecommons.org/licenses/by/2.0>, via Wikimedia Commons"
-						id="home-hero-image"
-					/>
-				</picture>
-		</div>
 	</section>
 </Container>
 
 <style>
+	.hero-nav{
+		grid-column: 1 / span 2;
+		grid-row: 1;
+		color:white;
+		z-index:3;
+	}
 	.hero-section-header{
 		font-weight:200;
 	}
+	.video-overlay{
+		background-color: rgba(0,0,0,0.5);
+		width: 100%;
+		height:100%;
+		grid-column: 1 / span 2;
+		grid-row: 1 / span 2;
+		overflow-y:hidden;
+		max-height:500px;
+		z-index:2;
+	}
+	.hero-video{
+		width: 100%;
+		grid-column: 1 / span 2;
+		grid-row: 1 / span 2;
+		overflow-y:hidden;
+		max-height:500px;
+		object-fit: cover;
+		z-index:1;
+	}
 	.garden{
-		color: var(--theme-on-surface-1);
 		font-weight:bold;
+		color: var(--theme-surface-2);
 	}
 	.government{
 		font-weight:bold;
-		color: var(--theme-on-surface-2);
+		color: var(--theme-surface-2);
 	}
 	.hero-section__section {
 		margin: var(--section-margin) auto;
 		min-height: clamp(90vh, 100vw, calc(100vh - var(--navbar-height)));
 		display: grid;
 		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 70px 1fr;
 		align-items: center;
 		gap: 1rem;
 	}
 	.hero-section__text {
 		justify-self: center;
 		max-width: 25rem;
+		grid-column: 2;
+		grid-row: 1 / span 2;
+		color:white;
+		z-index:2;
 	}
 	.hero-btns__container {
 		display: flex;

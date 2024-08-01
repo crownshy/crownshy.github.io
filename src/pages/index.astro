@@ -1,5 +1,6 @@
 ---
 import { Container, FeatureCard } from '@components/odyssey-theme';
+import ContactForm from '../components/forms/ContactForm.astro';
 
 import Layout from '../layouts/Page.astro';
 import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro';
@@ -18,13 +19,16 @@ import {
 <Layout>
 	<HomeHeroSection />
 	<Container>
-		<section class="feature-card__section">
-				<h2>Who are we?</h2>
+		<section class="feature-card__section" id="team">
+				<h2 class='section-header'>Who are we?</h2>
 				<div class="feature-card__grid">
 				<TextCardSection>
 					<div class='bio' >
-						<h3>Liz</h3>
-						<img class='bio-image' src="/assets/images/liz-square.jpg"/>
+
+						<div class='headshot'>
+							<h3>Liz</h3>
+							<img class='bio-image' src="/assets/images/liz-square.jpg"/>
+						</div>
 						<p>
 						Elizabeth Barry serves as Head of Partnerships at The Computational Democracy Project, the 501(c)3 organization she established with the creators of the Polis technology to steward its open source code and methods. Elizabeth works with facilitators, social movements, civil society organizations, journalists, indigenous nations, democratic governments both young and old, and peacebuilders to implement "listening at scale." The collaboration began when her presence at Taiwan's 2014 Sunflower Revolution and subsequent relationship with g0v led to her writing up the first coverage of vTaiwan in the west, in the 2016 piece for Civicist titled "vTaiwan: Public Participation Methods on the Cyberpunk Frontier of Democracy,\" now republished by Taiwan's government.
 						</p>
@@ -32,11 +36,12 @@ import {
 			</TextCardSection>
 				<TextCardSection>
 					<div class='bio'>
-						<h3>Stuart</h3>
-						<img class='bio-image' src="/assets/images/stuart-square.jpg"/>
+						<div class='headshot'>
+							<h3>Stuart</h3>
+							<img class='bio-image' src="/assets/images/stuart-square.jpg"/>
+						</div>
 						<p>
-						Stuart Lynn is a developer, data scientist and tinkerer whose interests involve widening the participation in scientific discussion and inquiry to non-traditional communities through the development of tools and active participation in citizen science and collaborative processes. He holds a Master in Mathematical Physics and a PHD in Astrophysics from the University of Edinburgh. In previous roles he has worked with non-profits and NGOs with the Two Sigma Data Clinic, lead the Data Science team at CARTO and was the technical lead for the citizen science platform The Zooniverse. He is the lead developer of the Matico project and has built a number of other open source tools focused on understanding and using data.
-
+							Stuart Lynn is a developer, data scientist and tinkerer whose interests involve widening the participation in scientific discussion and inquiry to non-traditional communities through the development of tools and active participation in citizen science and collaborative processes. He holds a Master in Mathematical Physics and a PHD in Astrophysics from the University of Edinburgh. In previous roles he has worked with non-profits and NGOs with the Two Sigma Data Clinic, lead the Data Science team at CARTO and was the technical lead for the citizen science platform The Zooniverse. He is the lead developer of the Matico project and has built a number of other open source tools focused on understanding and using data.
 						</p>
 					</div>
 				</TextCardSection>
@@ -44,34 +49,40 @@ import {
 
 		</section>
 
-		<section class="feature-card__section">
-			<h2>Projects</h2>
-			<TextAndImageHero>
-		<div slot="text-container">
-			<h1>Polis Garden</h1>
-			<p>A site tracking Polis deployments, modifications and successes around the world</p>
-		</div>
-		<div slot="btns-container">
-			<Button href="http://polis.garden" customIcon
-				>Learn More<Fragment slot="icon">
-					<Icon name="ic:baseline-chevron-right" />
-				</Fragment></Button
-			>
-		</div>
-		<picture slot="image-container">
-			<img
-				src="/assets/images/polisgarden.jpg"
-				alt="Polis Garden"
-				id="home-hero-image"
-			/>
-		</picture>
-			</TextAndImageHero>
+		<section class="contact-hero__section" id='contact'>
+			<div class="contact-hero__text-section">
+			<h1>Contact Us</h1>
+				<p>
+					Looking to run a deliberative process. Need help managing the technology? Want a custom instance of polis? Reach out and let us know!
+				</p>
+				<div>
+					<p>
+						<em><a href="tel:8008675309">(800) 867-5309</a></em> • <em
+							><a href="mailto:info@crown-shy.com">info@crown-shy.com</a
+							></em
+						>
+					</p>
+				</div>
+			</div>
+			<div class="col-2__container">
+				<ContactForm />
+			</div>
 		</section>
 
 	</Container>
 </Layout>
 
 <style>
+	.headshot{
+		display:flex;
+		flex-
+		flex-direction:row;
+		justify-content:space-between;
+		align-items:start;
+	}
+	.section-header{
+		margin-left:1rem;
+	}
 	.bio{
 		margin-bottom: var(--section-margin);
 	}
@@ -90,5 +101,37 @@ import {
 		.feature-card__grid {
 			grid-template-columns: 1fr;
 		}
+		.headshot{
+			flex-direction:column;
+			align-items:center;
+			margin-bottom:1rem;
+		}
 	}
+		.contact-hero__section {
+		margin: var(--section-margin) auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		min-height: calc(90vh - var(--navbar-height));
+		gap: 3rem;
+	}
+	.contact-hero__text-section {
+		padding: 2rem;
+		display: flex;
+		margin:0px 1rem;
+		flex-direction: column;
+		justify-content: start;
+		border-radius: var(--theme-shape-radius);
+	}
+	.col-2__container {
+		margin:0px 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	@media (max-width: 768px) {
+		.contact-hero__section {
+			grid-template-columns: 1fr;
+		}
+	}
+
 </style>
